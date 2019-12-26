@@ -15,12 +15,12 @@ variable "security_group_id" {
 }
 
 variable "security_group_name" {
-  description = "The security group name used to launch a new security group when 'security_group_id' is not specified."
+  description = "The security group name used to launch a new security group when `security_group_id` is not specified."
   default     = "tf-modules-sg"
 }
 
 variable "security_group_description" {
-  description = "The description used to launch a new security group when 'security_group_id' is not specified."
+  description = "The description used to launch a new security group when `security_group_id` is not specified."
   default     = ""
 }
 

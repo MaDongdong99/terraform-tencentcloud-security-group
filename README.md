@@ -107,8 +107,8 @@ It is possible to use existing security group when specify `security_group_id` p
 | region | TencentCloud region to launch resources. | string | "" | no
 | tags | A map of tags to add to all resources. | map(string) | {} | no
 | security_group_id | The security group id id used to launch resources. | string | "" | no
-| security_group_name | The security group name used to launch a new security group when 'security_group_id' is not specified. | string | tf-modules-sg | no
-| security_group_description | The description used to launch a new security group when 'security_group_id' is not specified. | string | "" | no
+| security_group_name | The security group name used to launch a new security group when `security_group_id` is not specified. | string | tf-modules-sg | no
+| security_group_description | The description used to launch a new security group when `security_group_id` is not specified. | string | "" | no
 | security_group_tags | Additional tags for the security group. | map(string) | {} | no
 | ingress_with_cidr_blocks | List of ingress rules to create where `cidr_block` is used. | list(map(string)) | [] | no
 | egress_with_cidr_blocks | List of egress rules to create where `cidr_block` is used. | list(map(string)) | [] | no
@@ -117,7 +117,7 @@ It is possible to use existing security group when specify `security_group_id` p
 
 ### ingress_with_cidr_blocks and egress_with_cidr_blocks
 
-ingress_with_cidr_blocks and egress_with_cidr_blocks is a list of security group maps with cidr_ip, the folling name are defined.
+`ingress_with_cidr_blocks` and `egress_with_cidr_blocks` is a list of security group maps where `cidr_block` is used, the folling name are defined.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
@@ -129,7 +129,7 @@ ingress_with_cidr_blocks and egress_with_cidr_blocks is a list of security group
 
 ### ingress_with_source_sgids and egress_with_source_sgids
 
-ingress_with_source_sgids and egress_with_source_sgids is a list of security group maps with source_sgid, the folling name are defined.
+`ingress_with_source_sgids` and `egress_with_source_sgids` is a list of security group maps where `source_sgid` is used, the folling name are defined.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
