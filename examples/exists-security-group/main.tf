@@ -1,9 +1,16 @@
+provider "tencentcloud" {
+  region = "ap-guangzhou"
+}
+
 data "tencentcloud_security_groups" "foo" {
-  name = "default"
+  name       = "default"
+  project_id = 0
 }
 
 module "security_group" {
   source = "../../"
+
+  region = "ap-guangzhou"
 
   security_group_id = data.tencentcloud_security_groups.foo.security_groups.0.security_group_id
 

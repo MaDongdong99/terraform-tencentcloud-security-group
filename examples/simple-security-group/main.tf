@@ -10,6 +10,8 @@ data "tencentcloud_security_groups" "foo" {
 module "security_group" {
   source = "../../"
 
+  region = "ap-guangzhou"
+
   security_group_name        = "simple-security-group"
   security_group_description = "simple-security-group-test"
 
