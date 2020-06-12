@@ -3,7 +3,8 @@ provider "tencentcloud" {
 }
 
 data "tencentcloud_security_groups" "foo" {
-  name = "default"
+  name       = "default"
+  project_id = 0
 }
 
 module "security_group" {
