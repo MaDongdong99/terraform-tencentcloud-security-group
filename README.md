@@ -14,7 +14,7 @@ The following resources are included.
 ```hcl
 module "security_group" {
   source  = "terraform-tencentcloud-modules/security-group/tencentcloud"
-  version = "1.0.0"
+  version = "1.0.3"
 
   security_group_name        = "simple-security-group"
   security_group_description = "simple-security-group-test"
