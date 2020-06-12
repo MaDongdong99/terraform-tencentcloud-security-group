@@ -145,6 +145,8 @@ It is possible to use existing security group when specify `security_group_id` p
 | Name | Description |
 |------|-------------|
 | security_group_id | The id of security group. |
+| security_group_name | The name of security group. |
+| security_group_description | The description of security group. |
 
 ## Authors
 
