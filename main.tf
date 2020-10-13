@@ -1,8 +1,3 @@
-provider "tencentcloud" {
-  version = ">=1.19.0"
-  region  = var.region != "" ? var.region : null
-}
-
 resource "tencentcloud_security_group" "sg" {
   count       = var.security_group_id == "" ? 1 : 0
   name        = var.security_group_name
