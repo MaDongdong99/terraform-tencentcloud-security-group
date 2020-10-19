@@ -105,7 +105,6 @@ It is possible to use existing security group when specify `security_group_id` p
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| region | TencentCloud region to launch resources. | string | "" | no
 | tags | A map of tags to add to all resources. | map(string) | {} | no
 | security_group_id | The security group id id used to launch resources. | string | "" | no
 | security_group_name | The security group name used to launch a new security group when `security_group_id` is not specified. | string | tf-modules-sg | no

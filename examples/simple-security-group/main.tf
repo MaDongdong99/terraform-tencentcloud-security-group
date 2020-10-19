@@ -1,16 +1,10 @@
-provider "tencentcloud" {
-  region = "ap-guangzhou"
-}
-
 data "tencentcloud_security_groups" "foo" {
   name       = "default"
   project_id = 0
 }
 
 module "security_group" {
-  source = "../../"
-
-  region = "ap-guangzhou"
+  source = "terraform-tencentcloud-modules/security-group/tencentcloud"
 
   security_group_name        = "simple-security-group"
   security_group_description = "simple-security-group-test"
