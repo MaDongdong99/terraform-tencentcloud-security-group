@@ -25,6 +25,28 @@ variable "security_group_tags" {
   default     = {}
 }
 
+variable "lite_rule" {
+  description = "Whether to create lite rule for security group."
+  type        = bool
+  default     = false
+}
+
+# rule value format: [action]#[source]#[port]#[protocol]. 
+# example: "ACCEPT#10.0.0.0/8#ALL#TCP"
+variable "ingress_for_lite_rule" {
+  type        = list(string)
+  default     = []
+  description = "List of ingress rules to create for lite rule."
+}
+
+# rule value format: [action]#[source]#[port]#[protocol]. 
+# example: "DROP#10.0.0.0/8#ALL#ALL"
+variable "egress_for_lite_rule" {
+  type        = list(string)
+  default     = []
+  description = "List of egress rules to create for lite rule."
+}
+
 variable "ingress_with_cidr_blocks" {
   type        = list(map(string))
   default     = []

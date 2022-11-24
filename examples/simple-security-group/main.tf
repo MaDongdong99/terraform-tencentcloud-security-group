@@ -1,3 +1,7 @@
+provider "tencentcloud" {
+    region = "ap-guangzhou"
+}
+
 data "tencentcloud_security_groups" "foo" {
   name       = "default"
   project_id = 0

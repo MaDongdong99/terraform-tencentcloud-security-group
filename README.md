@@ -11,6 +11,26 @@ The following resources are included.
 
 ## Usage
 
+There are two ways to create security groups using this module:
+
+1. [Specifying predefined rules (HTTP, SSH, etc)](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group#security-group-with-predefined-rules)
+2. [Specifying custom rules](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group#security-group-with-custom-rules)
+
+### Security group with predefined rules
+```hcl
+module "web_server_sg" {
+  source = "terraform-tencentcloud-modules/security-group/tencentcloud//modules/http-80"
+  
+  security_group_name = "web-server"
+  security_group_description = "Security group for web-server with HTTP ports open within VPC"
+  vpc_id = "vpc-123-web"
+
+  
+}
+```
+
+### Security group with custom rules
+
 ```hcl
 module "security_group" {
   source  = "terraform-tencentcloud-modules/security-group/tencentcloud"
