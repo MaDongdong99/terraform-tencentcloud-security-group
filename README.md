@@ -18,7 +18,7 @@ This module aims to implement **ALL** combinations of arguments supported by Ten
 * Named groups of rules with ingress (inbound) and egress (outbound) for common scenarios (eg, [ssh](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/tree/master/modules/ssh), [http-80](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/tree/master/modules/http-80), [mysql](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/tree/master/modules/mysql), see the whole list [here](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/blob/master/modules/README.md))
 * Conditionally create security group and all required security group rules ("single boolean switch").
 
-Ingress and egress rules can be configured in a variety of ways. See [inputs variables](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/blob/master/variables.tf) for all supported arguments and [complete example](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/tree/master/examples/complete) for the complete use-case.
+Ingress and egress rules can be configured in a variety of ways. See [inputs variables](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/blob/master/variables.tf) for all supported arguments <!--and [complete example](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/tree/master/examples/complete) for the complete use-case.-->
 
 If there is a missing feature or a bug - [open an issue](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group/issues/new).
 
@@ -27,10 +27,9 @@ If there is a missing feature or a bug - [open an issue](https://github.com/terr
 There are three ways to create security groups using this module:
 
 1. [Specifying predefined rules (HTTP, SSH, etc)](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group#security-group-with-predefined-rules)
-1. [Specifying custom rules of single cidr block](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group#security-group-with-custom-rules-of-single-cidr-block)
 1. [Specifying custom rules of multiple cidr blocks](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group#security-group-with-custom-rules-of-multiple-cidr-blocks)
+1. [Specifying custom rules of single cidr block](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group#security-group-with-custom-rules-of-single-cidr-block)
 1. [Specifying custom rules of source security group id](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group#security-group-with-custom-rules-of-source-security-group-id)
-1. [Specifying custom rules](https://github.com/terraform-tencentcloud-modules/terraform-tencentcloud-security-group#security-group-with-custom-rules)
 
 ### Security group with predefined rules
 
@@ -97,8 +96,8 @@ module "security_group_with_single_cidr" {
   source  = "terraform-tencentcloud-modules/security-group/tencentcloud"
   version = "1.0.3"
 
-  security_group_name        = "simple-security-group"
-  security_group_description = "simple-security-group-test"
+  name        = "simple-security-group"
+  description = "simple-security-group-test"
 
   ingress_with_cidr_blocks = [
     {
@@ -157,8 +156,8 @@ module "security_group_with_single_cidr" {
   source  = "terraform-tencentcloud-modules/security-group/tencentcloud"
   version = "1.0.3"
 
-  security_group_name        = "simple-security-group"
-  security_group_description = "simple-security-group-test"
+  name        = "simple-security-group"
+  description = "simple-security-group-test"
 
   ingress_with_source_sgids = [
     {
