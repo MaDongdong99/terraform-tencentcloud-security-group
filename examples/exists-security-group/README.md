@@ -19,3 +19,5 @@ Note, this example may create resources which cost money. Run `terraform destroy
 | Name | Description |
 |------|-------------|
 | security_group_id  | The id of security group. |
+| security_group_name  | The name of security group. |
+| security_group_description  | The description of security group. |

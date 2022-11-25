@@ -4,10 +4,10 @@ data "tencentcloud_security_groups" "foo" {
 }
 
 module "security_group" {
-  source = "../../"
+  source = "../..//modules/http-80"
 
-  name        = "simple-security-group"
-  description = "simple-security-group-test"
+  name        = "simple-http"
+  description = "simple-http-test"
 
   ingress_with_cidr_blocks = [
     {
@@ -16,24 +16,6 @@ module "security_group" {
     {
       port       = "80"
       cidr_block = "10.1.0.0/16"
-    },
-    {
-      port       = "808"
-      cidr_block = "10.2.0.0/16"
-      policy     = "drop"
-    },
-    {
-      port       = "8088"
-      protocol   = "UDP"
-      cidr_block = "10.3.0.0/16"
-      policy     = "accept"
-    },
-    {
-      port        = "8080-9090"
-      protocol    = "TCP"
-      cidr_block  = "10.4.0.0/16"
-      policy      = "accept"
-      description = "simple-security-group"
     },
   ]
 
@@ -44,24 +26,6 @@ module "security_group" {
     {
       port       = "80"
       cidr_block = "10.1.0.0/16"
-    },
-    {
-      port       = "808"
-      cidr_block = "10.2.0.0/16"
-      policy     = "drop"
-    },
-    {
-      port       = "8088"
-      protocol   = "UDP"
-      cidr_block = "10.3.0.0/16"
-      policy     = "accept"
-    },
-    {
-      port        = "8080-9090"
-      protocol    = "TCP"
-      cidr_block  = "10.4.0.0/16"
-      policy      = "accept"
-      description = "simple-security-group"
     },
   ]
 
@@ -92,10 +56,6 @@ module "security_group" {
   ]
 
   tags = {
-    module = "security-group"
-  }
-
-  security_group_tags = {
     test = "security-group"
   }
 }

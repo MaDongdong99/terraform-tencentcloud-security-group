@@ -125,7 +125,7 @@ variable "rules" {
     all-udp  = [0, 65535, "udp", "All UDP ports"]
     all-icmp = [-1, -1, "icmp", "All IPV4 ICMP"]
     # This is a fallback rule to pass to lookup() as default. It does not open anything, because it should never be used.
-    _ = ["", "", "", ""]
+    _ = ["", "", "tcp", ""]
   }
 }
 
@@ -136,144 +136,144 @@ variable "auto_groups" {
   # Valid keys - ingress_rules, egress_rules
   default = {
     http-80 = {
-      ingress_rules     = ["http-80-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["http-80-tcp"]
+      egress_rules  = ["all-all"]
     }
     http-8080 = {
-      ingress_rules     = ["http-8080-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["http-8080-tcp"]
+      egress_rules  = ["all-all"]
     }
     https-443 = {
-      ingress_rules     = ["https-443-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["https-443-tcp"]
+      egress_rules  = ["all-all"]
     }
     https-8443 = {
-      ingress_rules     = ["https-8443-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["https-8443-tcp"]
+      egress_rules  = ["all-all"]
     }
     ssh = {
-      ingress_rules     = ["ssh-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["ssh-tcp"]
+      egress_rules  = ["all-all"]
     }
     redis = {
-      ingress_rules     = ["redis-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["redis-tcp"]
+      egress_rules  = ["all-all"]
     }
     carbon-relay-ng = {
-      ingress_rules     = ["carbon-line-in-tcp", "carbon-line-in-udp", "carbon-pickle-tcp", "carbon-pickle-udp", "carbon-gui-udp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["carbon-line-in-tcp", "carbon-line-in-udp", "carbon-pickle-tcp", "carbon-pickle-udp", "carbon-gui-udp"]
+      egress_rules  = ["all-all"]
     }
     cassandra = {
-      ingress_rules     = ["cassandra-clients-tcp", "cassandra-thrift-clients-tcp", "cassandra-jmx-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["cassandra-clients-tcp", "cassandra-thrift-clients-tcp", "cassandra-jmx-tcp"]
+      egress_rules  = ["all-all"]
     }
     consul = {
-      ingress_rules     = ["consul-tcp", "consul-cli-rpc-tcp", "consul-webui-tcp", "consul-dns-tcp", "consul-dns-udp", "consul-serf-lan-tcp", "consul-serf-lan-udp", "consul-serf-wan-tcp", "consul-serf-wan-udp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["consul-tcp", "consul-cli-rpc-tcp", "consul-webui-tcp", "consul-dns-tcp", "consul-dns-udp", "consul-serf-lan-tcp", "consul-serf-lan-udp", "consul-serf-wan-tcp", "consul-serf-wan-udp"]
+      egress_rules  = ["all-all"]
     }
     ntp = {
-      ingress_rules     = ["ntp-udp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["ntp-udp"]
+      egress_rules  = ["all-all"]
     }
     elasticsearch = {
-      ingress_rules     = ["elasticsearch-rest-tcp", "elasticsearch-java-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["elasticsearch-rest-tcp", "elasticsearch-java-tcp"]
+      egress_rules  = ["all-all"]
     }
-     ipsec-500 = {
-      ingress_rules     = ["ipsec-500-udp"]
-      egress_rules      = ["all-all"]
+    ipsec-500 = {
+      ingress_rules = ["ipsec-500-udp"]
+      egress_rules  = ["all-all"]
     }
     ipsec-4500 = {
-      ingress_rules     = ["ipsec-4500-udp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["ipsec-4500-udp"]
+      egress_rules  = ["all-all"]
     }
     kafka = {
-      ingress_rules     = ["kafka-broker-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["kafka-broker-tcp"]
+      egress_rules  = ["all-all"]
     }
     ldaps = {
-      ingress_rules     = ["ldaps-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["ldaps-tcp"]
+      egress_rules  = ["all-all"]
     }
     memcached = {
-      ingress_rules     = ["memcached-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["memcached-tcp"]
+      egress_rules  = ["all-all"]
     }
     mongodb = {
-      ingress_rules     = ["mongodb-27017-tcp", "mongodb-27018-tcp", "mongodb-27019-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["mongodb-27017-tcp", "mongodb-27018-tcp", "mongodb-27019-tcp"]
+      egress_rules  = ["all-all"]
     }
     mysql = {
-      ingress_rules     = ["mysql-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["mysql-tcp"]
+      egress_rules  = ["all-all"]
     }
     mssql = {
-      ingress_rules     = ["mssql-tcp", "mssql-udp", "mssql-analytics-tcp", "mssql-broker-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["mssql-tcp", "mssql-udp", "mssql-analytics-tcp", "mssql-broker-tcp"]
+      egress_rules  = ["all-all"]
     }
     nfs = {
-      ingress_rules     = ["nfs-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["nfs-tcp"]
+      egress_rules  = ["all-all"]
     }
     nomad = {
-      ingress_rules     = ["nomad-http-tcp", "nomad-rpc-tcp", "nomad-serf-tcp", "nomad-serf-udp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["nomad-http-tcp", "nomad-rpc-tcp", "nomad-serf-tcp", "nomad-serf-udp"]
+      egress_rules  = ["all-all"]
     }
     openvpn = {
-      ingress_rules     = ["openvpn-udp", "openvpn-tcp", "openvpn-https-tcp"]
-      egress_rules      = ["all-all"]
-    } 
+      ingress_rules = ["openvpn-udp", "openvpn-tcp", "openvpn-https-tcp"]
+      egress_rules  = ["all-all"]
+    }
     postgresql = {
-      ingress_rules     = ["postgresql-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["postgresql-tcp"]
+      egress_rules  = ["all-all"]
     }
     oracle-db = {
-      ingress_rules     = ["oracle-db-tcp"]
-      egress_rules      = ["all-all"]
-    } 
+      ingress_rules = ["oracle-db-tcp"]
+      egress_rules  = ["all-all"]
+    }
     puppet = {
-      ingress_rules     = ["puppet-tcp", "puppetdb-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["puppet-tcp", "puppetdb-tcp"]
+      egress_rules  = ["all-all"]
     }
     rabbitmq = {
-      ingress_rules     = ["rabbitmq-4369-tcp", "rabbitmq-5671-tcp", "rabbitmq-5672-tcp", "rabbitmq-15672-tcp", "rabbitmq-25672-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["rabbitmq-4369-tcp", "rabbitmq-5671-tcp", "rabbitmq-5672-tcp", "rabbitmq-15672-tcp", "rabbitmq-25672-tcp"]
+      egress_rules  = ["all-all"]
     }
     rdp = {
-      ingress_rules     = ["rdp-tcp", "rdp-udp"]
-      egress_rules      = ["all-all"]
-    } 
+      ingress_rules = ["rdp-tcp", "rdp-udp"]
+      egress_rules  = ["all-all"]
+    }
     redshift = {
-      ingress_rules     = ["redshift-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["redshift-tcp"]
+      egress_rules  = ["all-all"]
     }
     splunk = {
-      ingress_rules     = ["splunk-indexer-tcp", "splunk-clients-tcp", "splunk-splunkd-tcp", "splunk-hec-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["splunk-indexer-tcp", "splunk-clients-tcp", "splunk-splunkd-tcp", "splunk-hec-tcp"]
+      egress_rules  = ["all-all"]
     }
     squid = {
-      ingress_rules     = ["squid-proxy-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["squid-proxy-tcp"]
+      egress_rules  = ["all-all"]
     }
     storm = {
-      ingress_rules     = ["storm-nimbus-tcp", "storm-ui-tcp", "storm-supervisor-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["storm-nimbus-tcp", "storm-ui-tcp", "storm-supervisor-tcp"]
+      egress_rules  = ["all-all"]
     }
     web = {
-      ingress_rules     = ["http-80-tcp", "http-8080-tcp", "https-443-tcp", "web-jmx-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["http-80-tcp", "http-8080-tcp", "https-443-tcp", "web-jmx-tcp"]
+      egress_rules  = ["all-all"]
     }
     winrm = {
-      ingress_rules     = ["winrm-http-tcp", "winrm-https-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["winrm-http-tcp", "winrm-https-tcp"]
+      egress_rules  = ["all-all"]
     }
     zipkin = {
-      ingress_rules     = ["zipkin-admin-tcp", "zipkin-admin-query-tcp", "zipkin-admin-web-tcp", "zipkin-query-tcp", "zipkin-web-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["zipkin-admin-tcp", "zipkin-admin-query-tcp", "zipkin-admin-web-tcp", "zipkin-query-tcp", "zipkin-web-tcp"]
+      egress_rules  = ["all-all"]
     }
     zookeeper = {
-      ingress_rules     = ["zookeeper-2181-tcp", "zookeeper-2888-tcp", "zookeeper-3888-tcp", "zookeeper-jmx-tcp"]
-      egress_rules      = ["all-all"]
+      ingress_rules = ["zookeeper-2181-tcp", "zookeeper-2888-tcp", "zookeeper-3888-tcp", "zookeeper-jmx-tcp"]
+      egress_rules  = ["all-all"]
     }
   }
 }

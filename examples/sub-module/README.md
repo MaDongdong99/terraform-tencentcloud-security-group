@@ -1,10 +1,10 @@
 # SecurityGroup Module Example
 
-This module will create a new SecurityGroup and Rules.
+This module will create SecurityGroup Rules by sub module http-80
 
 ## Usage
 
-To run this example, you need first replace the configuration like `security_group_name`, `ingress_with_cidr_blocks` etc, and then execute:
+To run this example, you need first add terraform provider declaration:
 
 ```bash
 $ terraform init

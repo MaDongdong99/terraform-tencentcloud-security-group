@@ -16,7 +16,7 @@ module "sg" {
   ingress_with_cidr_blocks = var.ingress_with_cidr_blocks
 
   # Open for security group id
-  ingress_with_source_security_group_id = var.ingress_with_source_security_group_id
+  ingress_with_source_sgids = var.ingress_with_source_sgids
 
   # The IPv4 CIDR ranges list to use on ingress cidrs rules.
   ingress_cidr_blocks = var.ingress_cidr_blocks
@@ -32,7 +32,7 @@ module "sg" {
   egress_with_cidr_blocks = var.egress_with_cidr_blocks
 
   # Open for security group id
-  egress_with_source_security_group_id = var.egress_with_source_security_group_id
+  egress_with_source_sgids = var.egress_with_source_sgids
 
   # The IPv4 CIDR ranges list to use on egress cidrs rules.
   egress_cidr_blocks = var.egress_cidr_blocks
