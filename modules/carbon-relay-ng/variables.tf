@@ -49,7 +49,7 @@ variable "ingress_with_cidr_blocks" {
   default     = []
 }
 
-variable "ingress_with_source_security_group_id" {
+variable "ingress_with_source_sgids" {
   description = "List of ingress rules to create where `source_sgid` is used"
   type        = list(map(string))
   default     = []
@@ -78,7 +78,7 @@ variable "egress_with_cidr_blocks" {
   default     = []
 }
 
-variable "egress_with_source_security_group_id" {
+variable "egress_with_source_sgids" {
   description = "List of egress rules to create where 'source_sgid' is used"
   type        = list(map(string))
   default     = []

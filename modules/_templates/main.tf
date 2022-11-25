@@ -37,24 +37,3 @@ module "sg" {
   # The IPv4 CIDR ranges list to use on egress cidrs rules.
   egress_cidr_blocks = var.egress_cidr_blocks
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}

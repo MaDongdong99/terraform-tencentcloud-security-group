@@ -31,7 +31,7 @@ check_dependencies() {
 
 auto_groups_data() {
   # Removing line with "type" because it json2hcl works with HCL1 only (ref https://github.com/kvz/json2hcl/issues/12)
-  sed '/type/ d' rules.tf|hcl2json rules.tf | jq -r '..|.auto_groups?|values|.[0].default'
+  sed '/type/ d' rules.tf | hcl2json rules.tf | jq -r '..|.auto_groups?|values|.[0].default'
 }
 
 auto_groups_keys() {
