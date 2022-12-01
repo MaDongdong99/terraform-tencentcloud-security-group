@@ -4,10 +4,10 @@ data "tencentcloud_security_groups" "foo" {
 }
 
 module "security_group" {
-  source = "terraform-tencentcloud-modules/security-group/tencentcloud"
+  source = "../../"
 
-  security_group_name        = "simple-security-group"
-  security_group_description = "simple-security-group-test"
+  name        = "simple-security-group"
+  description = "simple-security-group-test"
 
   ingress_with_cidr_blocks = [
     {

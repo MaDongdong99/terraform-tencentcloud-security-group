@@ -4,7 +4,7 @@ data "tencentcloud_security_groups" "foo" {
 }
 
 module "security_group" {
-  source = "terraform-tencentcloud-modules/security-group/tencentcloud"
+  source = "../../"
 
   security_group_id = data.tencentcloud_security_groups.foo.security_groups.0.security_group_id
 
