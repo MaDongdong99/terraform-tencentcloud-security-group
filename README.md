@@ -299,8 +299,8 @@ module "vote_service_sg" {
 | egress_with_cidr_blocks | List of egress rules to create where `cidr_block` is used. | list(map(string)) | [] | no
 | ingress_with_source_sgids | List of ingress rules to create where `source_sgid` is used. | list(map(string)) | [] | no
 | egress_with_source_sgids | List of egress rules to create where `source_sgid` is used. | list(map(string)) | [] | no
-| ingress_with_address_templates | List of address template id to create where `address_template` is used. | list(map(string)) | [] | no
-| egress_with_address_templates | List of address template id to create where `address_template` is used. | list(map(string)) | [] | no
+| ingress_with_address_templates | List of address template id to create where `address_template` is used. | list | [] | no
+| egress_with_address_templates | List of address template id to create where `address_template` is used. | list | [] | no
 | ingress_for_lite_rule| List of ingress rules to create for lite rule. | list(string) | [] | no
 | egress_for_lite_rule| List of egress rules to create for lite rule. | list(string) | [] | no
 

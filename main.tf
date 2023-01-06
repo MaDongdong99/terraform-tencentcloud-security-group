@@ -65,7 +65,7 @@ locals {
         for _, cidr in split(",", lookup(obj, "cidr_block", join(",", var.ingress_cidr_blocks))) : {
           cidr_block  = cidr
           policy      = lookup(obj, "policy", var.ingress_policy)
-          port        = lookup(obj, "port", lookup(obj, "rule", null) == null ? "ALL" : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
+          port        = lookup(obj, "port", lookup(obj, "rule", null) == null ? null : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
           protocol    = lookup(obj, "protocol", var.rules[lookup(obj, "rule", "_")][2])
           description = lookup(obj, "description", lookup(obj, "rule", null) == null ? format("Ingress Rule With Cidr Block %s", cidr) : var.rules[lookup(obj, "rule", "_")][3])
         }
@@ -95,7 +95,7 @@ locals {
       for _, obj in var.ingress_with_source_sgids : {
         source_sgid = lookup(obj, "source_sgid", "")
         policy      = lookup(obj, "policy", var.ingress_policy)
-        port        = lookup(obj, "port", lookup(obj, "rule", null) == null ? "ALL" : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
+        port        = lookup(obj, "port", lookup(obj, "rule", null) == null ? null : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
         protocol    = lookup(obj, "protocol", var.rules[lookup(obj, "rule", "_")][2])
         description = lookup(obj, "description", lookup(obj, "rule", null) == null ? format("Ingress Rule With Source Security Group %s", lookup(obj, "source_sgid", "")) : var.rules[lookup(obj, "rule", "_")][3])
       }
@@ -123,9 +123,9 @@ locals {
       for _, obj in var.ingress_with_address_templates : {
         address_template = lookup(obj, "address_template", [])
         policy           = lookup(obj, "policy", var.ingress_policy)
-        port             = lookup(obj, "port", lookup(obj, "rule", null) == null ? "ALL" : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
+        port             = lookup(obj, "port", lookup(obj, "rule", null) == null ? null : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
         protocol         = lookup(obj, "protocol", var.rules[lookup(obj, "rule", "_")][2])
-        description      = lookup(obj, "description", lookup(obj, "rule", null) == null ? format("Ingress Rule With Address Template %s", lookup(obj, "address_template", "")) : var.rules[lookup(obj, "rule", "_")][3])
+        description      = lookup(obj, "description", lookup(obj, "rule", null) == null ? "Ingress Rule With Address Template" : var.rules[lookup(obj, "rule", "_")][3])
       }
     ]
   )
@@ -188,7 +188,7 @@ locals {
         for _, cidr in split(",", lookup(obj, "cidr_block", join(",", var.egress_cidr_blocks))) : {
           cidr_block  = cidr
           policy      = lookup(obj, "policy", var.egress_policy)
-          port        = lookup(obj, "port", lookup(obj, "rule", null) == null ? "ALL" : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
+          port        = lookup(obj, "port", lookup(obj, "rule", null) == null ? null : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
           protocol    = lookup(obj, "protocol", var.rules[lookup(obj, "rule", "_")][2])
           description = lookup(obj, "description", lookup(obj, "rule", null) == null ? format("Egress Rule With Cidr Block %s", cidr) : var.rules[lookup(obj, "rule", "_")][3])
         }
@@ -217,7 +217,7 @@ locals {
       for _, obj in var.egress_with_source_sgids : {
         source_sgid = lookup(obj, "source_sgid", "")
         policy      = lookup(obj, "policy", var.egress_policy)
-        port        = lookup(obj, "port", lookup(obj, "rule", null) == null ? "ALL" : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
+        port        = lookup(obj, "port", lookup(obj, "rule", null) == null ? null : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
         protocol    = lookup(obj, "protocol", var.rules[lookup(obj, "rule", "_")][2])
         description = lookup(obj, "description", lookup(obj, "rule", null) == null ? format("Egress Rule With Source Security Group %s", lookup(obj, "source_sgid", "")) : var.rules[lookup(obj, "rule", "_")][3])
       }
@@ -245,9 +245,9 @@ locals {
       for _, obj in var.egress_with_address_templates : {
         address_template = lookup(obj, "address_template", [])
         policy           = lookup(obj, "policy", var.ingress_policy)
-        port             = lookup(obj, "port", lookup(obj, "rule", null) == null ? "ALL" : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
+        port             = lookup(obj, "port", lookup(obj, "rule", null) == null ? null : var.rules[lookup(obj, "rule", "_")][0] - lookup(obj, "rule", null) == null ? 0 : var.rules[lookup(obj, "rule", "_")][1])
         protocol         = lookup(obj, "protocol", var.rules[lookup(obj, "rule", "_")][2])
-        description      = lookup(obj, "description", lookup(obj, "rule", null) == null ? format("Ingress Rule With Address Template %s", lookup(obj, "address_template", "")) : var.rules[lookup(obj, "rule", "_")][3])
+        description      = lookup(obj, "description", lookup(obj, "rule", null) == null ? "Ingress Rule With Address Template" : var.rules[lookup(obj, "rule", "_")][3])
       }
     ]
   )

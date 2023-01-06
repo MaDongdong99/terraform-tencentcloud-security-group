@@ -106,7 +106,6 @@ variable "ingress_with_source_sgids" {
 }
 
 variable "ingress_with_address_templates" {
-  type        = list(map(string))
   default     = []
   description = "List of address template id to create where `address_template` is used."
 }
@@ -145,7 +144,6 @@ variable "egress_with_source_sgids" {
 }
 
 variable "egress_with_address_templates" {
-  type        = list(map(string))
   default     = []
   description = "List of address template id to create where `address_template` is used."
 }
