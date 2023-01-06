@@ -34,7 +34,7 @@ variable "name" {
 variable "description" {
   description = "The description used to launch a new security group when `security_group_id` is not specified."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "project_id" {
@@ -105,6 +105,12 @@ variable "ingress_with_source_sgids" {
   description = "List of ingress rules to create where `source_sgid` is used."
 }
 
+variable "ingress_with_address_templates" {
+  type        = list(map(string))
+  default     = []
+  description = "List of address template id to create where `address_template` is used."
+}
+
 ##########
 # Egress
 ##########
@@ -136,4 +142,10 @@ variable "egress_with_source_sgids" {
   type        = list(map(string))
   default     = []
   description = "List of egress rules to create where `source_sgid` is used."
+}
+
+variable "egress_with_address_templates" {
+  type        = list(map(string))
+  default     = []
+  description = "List of address template id to create where `address_template` is used."
 }

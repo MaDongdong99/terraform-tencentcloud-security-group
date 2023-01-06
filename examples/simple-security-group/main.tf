@@ -91,6 +91,49 @@ module "security_group" {
     },
   ]
 
+  ingress_with_address_templates = [
+    {
+      address_template = [
+        {
+          group_id = "test_gid"
+        }
+      ]
+    },
+    {
+      port     = "8080-9090"
+      protocol = "TCP"
+      address_template = [
+        {
+          group_id = "test_gid"
+        }
+      ]
+      policy      = "accept"
+      description = "simple-security-group"
+    },
+  ]
+
+  egress_with_address_templates = [
+    {
+      address_template = [
+        {
+          template_id = "test_tid"
+        }
+      ]
+
+    },
+    {
+      port     = "8080-9090"
+      protocol = "TCP"
+      address_template = [
+        {
+          template_id = "test_tid"
+        }
+      ]
+      policy      = "accept"
+      description = "simple-security-group"
+    },
+  ]
+
   tags = {
     module = "security-group"
   }

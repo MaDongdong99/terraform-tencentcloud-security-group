@@ -152,7 +152,7 @@ module "security_group_with_single_cidr" {
 
 ### Security group with custom rules of source security group id
 ```hcl
-module "security_group_with_single_cidr" {
+module "security_group_with_source_gid" {
   source  = "terraform-tencentcloud-modules/security-group/tencentcloud"
   version = "1.0.3"
 
@@ -185,6 +185,69 @@ module "security_group_with_single_cidr" {
       policy      = "accept"
       description = "simple-security-group"
     },
+  ]
+
+  tags = {
+    module = "security-group"
+  }
+
+  security_group_tags = {
+    test = "security-group"
+  }
+}
+```
+
+### Security group with custom rules of address template
+```hcl
+module "security_group_with_address_template" {
+  source  = "terraform-tencentcloud-modules/security-group/tencentcloud"
+  version = "1.0.3"
+
+  name        = "simple-security-group"
+  description = "simple-security-group-test"
+
+  ingress_with_address_templates = [
+    {
+      rule        = "mysql-tcp"
+      address_template = [
+        {
+            group_id = sg-123456
+        }
+      ]
+    },
+    {
+      port        = "8080-9090"
+      protocol    = "TCP"
+      address_template = [
+        {
+            group_id = sg-123456
+        }
+      ]
+      policy      = "accept"
+      description = "simple-security-group"
+    }
+  ]
+
+  egress_with_address_templates = [
+    {
+      rule        = "mysql-tcp"
+      address_template = [
+        {
+            template_id = sg-123456
+        }
+      ]
+    },
+    {
+      port        = "8080-9090"
+      protocol    = "TCP"
+      address_template = [
+        {
+            template_id = sg-123456
+        }
+      ]
+      policy      = "accept"
+      description = "simple-security-group"
+    }
   ]
 
   tags = {
@@ -236,12 +299,14 @@ module "vote_service_sg" {
 | egress_with_cidr_blocks | List of egress rules to create where `cidr_block` is used. | list(map(string)) | [] | no
 | ingress_with_source_sgids | List of ingress rules to create where `source_sgid` is used. | list(map(string)) | [] | no
 | egress_with_source_sgids | List of egress rules to create where `source_sgid` is used. | list(map(string)) | [] | no
+| ingress_with_address_templates | List of address template id to create where `address_template` is used. | list(map(string)) | [] | no
+| egress_with_address_templates | List of address template id to create where `address_template` is used. | list(map(string)) | [] | no
 | ingress_for_lite_rule| List of ingress rules to create for lite rule. | list(string) | [] | no
 | egress_for_lite_rule| List of egress rules to create for lite rule. | list(string) | [] | no
 
 ### ingress_with_cidr_blocks and egress_with_cidr_blocks
 
-`ingress_with_cidr_blocks` and `egress_with_cidr_blocks` is a list of security group maps where `cidr_block` is used, the folling name are defined.
+`ingress_with_cidr_blocks` and `egress_with_cidr_blocks` is a list of security group maps where `cidr_block` is used, the following name are defined.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
@@ -253,7 +318,7 @@ module "vote_service_sg" {
 
 ### ingress_with_source_sgids and egress_with_source_sgids
 
-`ingress_with_source_sgids` and `egress_with_source_sgids` is a list of security group maps where `source_sgid` is used, the folling name are defined.
+`ingress_with_source_sgids` and `egress_with_source_sgids` is a list of security group maps where `source_sgid` is used, the following name are defined.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
@@ -262,6 +327,19 @@ module "vote_service_sg" {
 | port | Range of the port. The available value can be one, multiple or one segment. E.g. 80, 80,90 and 80-90. Default to all ports. | string | "ALL" | no
 | policy | Rule policy of security group, the available value include ACCEPT and DROP. | string | "ACCEPT" | no
 | description | Description of the security group rule. | string | "" | no
+
+### ingress_with_address_templates and egress_with_address_templates
+
+`ingress_with_address_templates` and `egress_with_address_templates` is a list of security group maps where `address_template` is used, the following name are defined.
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| address_template | ID list of address template for the security group | list(string) | [] | yes
+| protocol | Type of ip protocol, the available value include TCP, UDP and ICMP. | string | "TCP" | no
+| port | Range of the port. The available value can be one, multiple or one segment. E.g. 80, 80,90 and 80-90. Default to all ports. | string | "ALL" | no
+| policy | Rule policy of security group, the available value include ACCEPT and DROP. | string | "ACCEPT" | no
+| description | Description of the security group rule. | string | "" | no
+
 
 ## Outputs
 
