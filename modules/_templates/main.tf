@@ -1,10 +1,10 @@
 module "sg" {
-  source = "../.."
-  create = var.create
-  name = var.name
+  source      = "../.."
+  create      = var.create
+  name        = var.name
   description = var.description
-  project_id = var.project_id   
-  tags = var.tags
+  project_id  = var.project_id
+  tags        = var.tags
 
   ##########
   # Ingress
@@ -21,7 +21,7 @@ module "sg" {
   # The IPv4 CIDR ranges list to use on ingress cidrs rules.
   ingress_cidr_blocks = var.ingress_cidr_blocks
 
-  
+
   ##########
   # Egress
   ##########
