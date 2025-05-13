@@ -48,6 +48,17 @@ resource "tencentcloud_security_group_rule_set" "rule_set" {
   }
 
   dynamic "egress" {
+    for_each = var.default_egress_deny_all ? [] : [1]
+    content {
+      action      = "ACCEPT"
+      cidr_block  = "0.0.0.0/0"
+      protocol    = "ALL"
+      port        = "ALL"
+      description = "egress default allow all traffic"
+    }
+  }
+
+  dynamic "egress" {
     for_each = var.default_egress_deny_all ? ["1"] : []
     content {
       action      = "DROP"
